@@ -1,0 +1,33 @@
+/*
+ * Written for the Hackerrank Algorithms > Implementation > Repeated String question in Java7.
+ */
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        long n = in.nextLong();
+        long numA = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'a') {
+                numA++;
+            }
+        }
+        numA *= n/s.length();
+        long leftover = n - (n/s.length())*s.length();
+        for (int j = 0; j < leftover; j++) {
+            if (s.charAt(j) == 'a') {
+                numA++;
+            }
+        }
+
+        
+        System.out.println(numA);
+    }
+}

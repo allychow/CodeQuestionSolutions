@@ -1,0 +1,26 @@
+// method that detects a cycle in a linked list (i.e. if a node is visited more than once while going through a linked list) using Floyd's
+// cycle finding algorithm. 
+bool has_cycle(Node* head) {
+    if (head == NULL || head->next == NULL) {
+        return false;
+    }
+    Node* temp = head;
+    Node* move = head;
+    //bool ok = true;
+    while (true) {
+        temp = temp->next;
+        if (move->next != NULL) {
+            move = move->next->next;
+        } else {
+            return false;
+        }
+        if (move == NULL || temp == NULL) {
+            return false;
+        }
+        if (move == temp) {
+            return true;
+        }
+    }
+    // Complete this function
+    // Do not write the main method
+}

@@ -1,26 +1,27 @@
 // method that detects a cycle in a linked list (i.e. if a node is visited more than once while going through a linked list) using Floyd's
 // cycle finding algorithm. 
+
+// Floyd's cycle finding algorithm is also known as the "tortoise and hare" algorithm, which involves making two references to the list
+// at different speeds.  
+
 bool has_cycle(Node* head) {
     if (head == NULL || head->next == NULL) {
         return false;
     }
     Node* temp = head;
     Node* move = head;
-    //bool ok = true;
     while (true) {
-        temp = temp->next;
+        temp = temp->next; // moves the temp node slower than the move node
         if (move->next != NULL) {
             move = move->next->next;
         } else {
             return false;
         }
         if (move == NULL || temp == NULL) {
-            return false;
+            return false; // breaks the loop
         }
-        if (move == temp) {
+        if (move == temp) { // must have had a loop, therefore return true
             return true;
         }
     }
-    // Complete this function
-    // Do not write the main method
 }

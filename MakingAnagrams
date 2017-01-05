@@ -8,17 +8,21 @@ public class Solution {
         int num = 0;
         StringBuilder a = new StringBuilder(first);
         StringBuilder b = new StringBuilder(second);
+        // checks every letter in the first String against the second String
         for (int i = 0; i < a.length(); i++) {
             for (int j = 0; j < b.length(); j++) {
                 if (a.charAt(i) == b.charAt(j)) {
+                // deletes the character if found to be a match in case there are multiples of certain characters
                     a.deleteCharAt(i);
                     b.deleteCharAt(j);
+                // since the character was deleted, the next letter takes on the index of the deleted character (otherwise
+                // the loop would skip the following letter due to the String changing the character at the current index)
                     i--;
                     break;
                 }
             }
         }
-        
+        // checks every letter in the second String against the first String
         for (int i = 0; i < b.length(); i++) {
             for (int j = 0; j < a.length(); j++) {
                 if (b.charAt(i) == a.charAt(j)) {
@@ -29,14 +33,17 @@ public class Solution {
                 }
             }
         }
+        // updates the Strings 
         first = a.toString();
         second = b.toString();
+        // finds the number of letters that were not needed to make anagrams of each String
         num = first.length() + second.length();
         return num;
     }
   
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        // takes in two Strings as input from the user
         String a = in.next();
         String b = in.next();
         System.out.println(numberNeeded(a, b));

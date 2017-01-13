@@ -21,12 +21,13 @@ public:
         bool foundCycle = false;
         
         while (tortoise != NULL && hare != NULL) {
-            tortoise = tortoise->next;
-            if (hare->next == NULL) {
+            tortoise = tortoise->next; // moves the tortoise slower than the hare by 1
+            
+            if (hare->next == NULL) { 
                 return NULL;
             } 
             
-            hare = hare->next->next;
+            hare = hare->next->next; // moves the hare faster than the tortoise by 1
             
             if (tortoise == hare) {
                 foundCycle = true;
@@ -37,11 +38,11 @@ public:
         if (!foundCycle) {
             return NULL;
         } 
-        tortoise = head;
+        tortoise = head; // returns the tortoise to the beginning of the linked list
         while (tortoise != hare) {
             tortoise = tortoise->next;
             hare = hare->next;
-        }
+        } // second intersection by Floyd's algorithm is at the start of the loop
         
         return tortoise;
     }

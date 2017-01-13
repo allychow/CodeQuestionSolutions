@@ -1,4 +1,4 @@
-/* Solution written in JavaScript for Two Sum II on LeetCode 
+/* Solution written in JavaScript for Two Sum II on LeetCode where the array is sorted in ascending order
  * @param {number[]} numbers
  * @param {number} target
  * @return {number[]}

@@ -18,7 +18,7 @@ public:
         
         ListNode* tortoise = head;
         ListNode* hare = head;
-        bool foundCycle = false;
+        //bool foundCycle = false;
         
         while (tortoise != NULL && hare != NULL) {
             tortoise = tortoise->next; // moves the tortoise slower than the hare by 1
@@ -30,14 +30,17 @@ public:
             hare = hare->next->next; // moves the hare faster than the tortoise by 1
             
             if (tortoise == hare) {
-                foundCycle = true;
+                //foundCycle = true;
                 break;
             }
         }
         
-        if (!foundCycle) {
+        /*if (!foundCycle) {
             return NULL;
-        } 
+        } */
+        if (tortoise == NULL || hare == NULL) {
+            return NULL;
+        }
         tortoise = head; // returns the tortoise to the beginning of the linked list
         while (tortoise != hare) {
             tortoise = tortoise->next;

@@ -1,0 +1,48 @@
+/**
+ * Solution written in C++ for the Linked List Cycle II question on LeetCode. Assumes the linked list has more than one element.
+ * Uses Floyd's Algorithm.
+ */
+ 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ 
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        
+        ListNode* tortoise = head;
+        ListNode* hare = head;
+        bool foundCycle = false;
+        
+        while (tortoise != NULL && hare != NULL) {
+            tortoise = tortoise->next;
+            if (hare->next == NULL) {
+                return NULL;
+            } 
+            
+            hare = hare->next->next;
+            
+            if (tortoise == hare) {
+                foundCycle = true;
+                break;
+            }
+        }
+        
+        if (!foundCycle) {
+            return NULL;
+        } 
+        tortoise = head;
+        while (tortoise != hare) {
+            tortoise = tortoise->next;
+            hare = hare->next;
+        }
+        
+        return tortoise;
+    }
+};

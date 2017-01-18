@@ -7,27 +7,21 @@ import java.util.regex.*;
 class nonduplicateLetter {
   public static void main(String args[]) {
     String word = "GOOGLE";
+    
     // split into substrings starting at the beginning.
-    // G OOGLE = two substrings. find the indexOf() of the second substrings
-    // continue adding letters from the second substring to the first until you
-    // reach -1 for indexOf().
+    // G OOGLE = two substrings. find the indexOf(substring1) of the second substring
+    // if indexOf returns a positive value, delete the characters in the first substring and the occurrences of the character in the second
+    // continue adding letters from the second substring to the first until you reach -1 as a return of indexOf()
+    
     StringBuilder first = new StringBuilder(word.substring(0,1));
     StringBuilder second = new StringBuilder(word.substring(1,word.length()));
-    //System.out.println(first);
-    //System.out.println(second.indexOf("G"));
-
-    //second.deleteCharAt(0);
     boolean found = false;
     int i = 0;
-    //System.out.println((first.toString()).charAt(i));
-
+    
     while (!found && i < word.length()) {
-      //System.out.println(first);
-      //System.out.println(second);
       if (second.indexOf(first.toString()) == -1) {
         System.out.println(first);
         found = true;
-        //System.out.println(first.charAt(i));
       } else {
         second.deleteCharAt(second.indexOf(first.toString()));
         first.deleteCharAt(0);

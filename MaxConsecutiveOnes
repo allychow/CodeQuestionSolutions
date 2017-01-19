@@ -1,0 +1,23 @@
+// written in Java for the max consecutive ones algorithm problem on leetcode
+public class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int num = 0;
+        int the = 0;
+        
+        //Map<Integer, Integer> themap = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] == 1) {
+                num++;
+            } 
+            if (nums[i] == 0 || i == nums.length-1) {
+                //themap.put(the, num);
+                if (num > the) {
+                    the = num;
+                }
+                num = 0;
+            }
+        }
+        return the;
+        
+    }
+}

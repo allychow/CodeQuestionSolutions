@@ -9,23 +9,23 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* a = headA;
-        ListNode* b = headB;
-        int reachedEnd = 0;
-        if (a == NULL || b == NULL) {
+        ListNode* a = headA; // node to traverse headA
+        ListNode* b = headB; // node to traverse headB
+        int reachedEnd = 0; // to track how many times the traversals have hit the end of the lists
+        if (a == NULL || b == NULL) { // if either of the lists are empty to begin with, return NULL
             return NULL;
         }
-        while (a != NULL && b != NULL && a != b) {
-            a = a->next;
+        while (a != NULL && b != NULL && a != b) { // traverse both lists until they intersect
+            a = a->next; // traverse
             b = b->next;
             
-            if (a == b) {
+            if (a == b) { // returns the node they intersect at
                 return a;
             }
             
-            if (a == NULL) {
+            if (a == NULL) { // move a to the opposite list head
                 a = headB;
-                reachedEnd++;
+                reachedEnd++; // increment the number of times the end of a list has been reached
                 
             }
             if (b == NULL) {
@@ -33,11 +33,11 @@ public:
                 reachedEnd++;
 
             }
-            if (reachedEnd > 2) {
-                return NULL;
+            if (reachedEnd > 2) { // should reach the intersection at least after both a and b have been moved IF there is an intersection
+                return NULL; // states no intersection based on drawing
             }
         }
 
-        return a;
+        return a; // default return
     }
 };

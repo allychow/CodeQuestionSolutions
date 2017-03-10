@@ -1,0 +1,10 @@
+// for leetcode's single number problem
+public class Solution {
+    public int singleNumber(int[] nums) {
+        int fin = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            fin ^= nums[i];
+        }
+        return fin;
+    }
+}

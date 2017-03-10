@@ -1,4 +1,4 @@
-// for leetcode's single number problem
+// for leetcode's single number problem and hackerrank's lonely integer problem
 public class Solution {
     public int singleNumber(int[] nums) {
         int fin = nums[0];

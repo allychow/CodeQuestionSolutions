@@ -5,7 +5,7 @@ public class Solution {
             return 0;
         }
         int result = 0;
-        int min = 1;
+        int min = 0;
         int minVal = prices[0];
         int max = 1;
         int absmax = 1;
@@ -14,19 +14,17 @@ public class Solution {
           if (maxVal <= prices[max]) {
             maxVal = prices[max];
             absmax = max;
-            while (min < absmax) {
               if (minVal > prices[min]) {
                 minVal = prices[min];
               }
               min++;
-            }
+            
             //System.out.println(absmax);
             //System.out.println(min);
             //System.out.println(result);
             if ((maxVal-minVal) > result) {
               result = maxVal-minVal;
               //System.out.println("UPDATE RESULT" + result);
-
             }
             maxVal = 0;
           }

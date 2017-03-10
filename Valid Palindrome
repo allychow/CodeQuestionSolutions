@@ -1,0 +1,38 @@
+// for leetcode's valid palindrome problem
+public class Solution {
+    public boolean isPalindrome(String s) {
+        String wordCleaned= s.replaceAll(("[^A-Za-z0-9]"), "");
+
+        
+        //wordCleaned = wordCleaned.toLowerCase();
+        String first;
+        String second;
+        //StringBuilder secondTurn = new StringBuilder();
+        //System.out.println(wordCleaned);
+        if (wordCleaned.length() % 2 != 0)  {
+            System.out.println("first");
+        first = wordCleaned.substring(0, wordCleaned.length()/2);
+        second = wordCleaned.substring(wordCleaned.length()/2+1, wordCleaned.length());
+        second = new StringBuilder(second).reverse().toString();
+        //second = secondTurn.toString();
+        //System.out.println(first);
+        //System.out.println(second);
+        } else {
+            //System.out.println("second");
+            first = wordCleaned.substring(0, wordCleaned.length()/2);
+            second = wordCleaned.substring(wordCleaned.length()/2, wordCleaned.length());
+            second = new StringBuilder(second).reverse().toString();
+            //second = secondTurn.toString();
+            //System.out.println(first);
+        //System.out.println(second);
+        }
+        //System.out.println("HIT");
+        //System.out.println(first.length() + " " + second.length());
+        if ((first.toLowerCase()).equals(second.toLowerCase())) {
+          //  System.out.println(first.length() + " " + second.length());
+            return true;
+        } 
+            return false;
+        
+    }
+}
